@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveCtl : MonoBehaviour
 {
     public enum MoveType { WAY_POINT, LOOK_AT, GEAR_VR}
-    public MoveType moveType = MoveType.WAY_POINT;
+    public MoveType moveType = MoveType.LOOK_AT;
     public float speed = 1.0f;
     public float damping = 3.0f;
 
@@ -14,6 +14,8 @@ public class MoveCtl : MonoBehaviour
     CharacterController cc;
     Transform camTr;
     int nextIdx = 1;
+
+    public static bool isStopped = false;
 
     void Start()
     {
@@ -30,6 +32,9 @@ public class MoveCtl : MonoBehaviour
 
     void Update()
     {
+        if (isStopped)
+            return;
+
         switch (moveType)
         {
             case MoveType.WAY_POINT: MoveWayPoint(); break;
