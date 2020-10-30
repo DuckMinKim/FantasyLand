@@ -29,7 +29,6 @@ public class MoveCtl : MonoBehaviour
 
     }
 
-
     void Update()
     {
         if (isStopped)

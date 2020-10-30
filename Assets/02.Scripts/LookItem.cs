@@ -5,6 +5,16 @@ using UnityEngine.EventSystems;
 
 public class LookItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IGvrPointerHoverHandler
 {
+    Animator anim;
+    readonly int hashOpen = Animator.StringToHash("IsOpen");
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    public void OnBoxOpen(bool isOpen) => anim.SetBool(hashOpen, isOpen);
+
     public void OnLookItemBox(bool isLookAt)
     {
         Debug.Log(isLookAt);
